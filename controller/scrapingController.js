@@ -9,14 +9,9 @@ const scraping = (req, res) => {
     var capitulos = [];
     var traducciones = [];
     var URL = url;
-    var Links = links;
     var Cap = cap;
     var Novela = IDnovela;
-
-    console.log(req.body)
-    console.log(Cap)
-    console.log(Novela)
-    console.log(URL)
+    var textosGenerales = [];
 
     var con = mysql.createConnection({
         host: "localhost",
@@ -44,8 +39,7 @@ const scraping = (req, res) => {
                 return Elementos;
             })
 
-            const textosGenerales = [];
-            for (let entradas = numero; entradas <= titulaso.length; entradas++) {
+            for (let entradas = numero; entradas < titulaso.length; entradas++) {
                 await page.goto(titulaso[entradas]);
 
                 const textoGeneral = await page.evaluate(() => {
@@ -76,7 +70,6 @@ const scraping = (req, res) => {
                 return Elementos;
             })
 
-            const textosGenerales = [];
             for (let entradas = numero; entradas <= titulaso.length; entradas++) {
                 await page.goto(titulaso[entradas]);
 
@@ -108,7 +101,6 @@ const scraping = (req, res) => {
                 return Elementos;
             })
 
-            const textosGenerales = [];
             for (let entradas = numero; entradas <= titulaso.length; entradas++) {
                 await page.goto(titulaso[entradas]);
 
@@ -140,7 +132,6 @@ const scraping = (req, res) => {
                 return Elementos;
             })
 
-            const textosGenerales = [];
             for (let entradas = numero; entradas <= titulaso.length; entradas++) {
                 await page.goto(titulaso[entradas]);
 
@@ -172,7 +163,6 @@ const scraping = (req, res) => {
                 return Elementos;
             })
 
-            const textosGenerales = [];
             for (let entradas = numero; entradas <= titulaso.length; entradas++) {
                 await page.goto(titulaso[entradas]);
 
@@ -197,7 +187,7 @@ const scraping = (req, res) => {
             capitulos.push(textoFijo.join('\n'));
         }
 
-        for (let capitulo = numero; capitulo <= capitulos.length; capitulo++) {
+        for (let capitulo = numero; capitulo < capitulos.length; capitulo++) {
 
             await page.goto('https://www.deepl.com/es/translator');
 
